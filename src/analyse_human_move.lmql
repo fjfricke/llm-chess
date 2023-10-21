@@ -1,0 +1,6 @@
+argmax
+"I am playing chess with color {color}.\n"
+"The human just made the move {move}.\n"
+"The chess board in FEN notation looks like this now: {fen}\n"
+"I should analyse the human move.\n"
+"Analysis: [ANALYSIS]"
