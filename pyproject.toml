@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "gpt-chess"
+version = "0.1.0"
+description = ""
+authors = ["Felix Fricke <felix@frickefamily.de>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+lmql = "^0.7.3"
+# streamlit = "^1.27.2"
+# stchess = "^0.0.1"
+# watchdog = "^3.0.0"
+flask = "^3.0.0"
+chess = "^1.10.0"
+
+[tool.poetry.dev-dependencies]
+# ptvsd = "^4.3.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

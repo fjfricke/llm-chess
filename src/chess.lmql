@@ -1,0 +1,6 @@
+argmax
+"I am playing chess with color {color}.\n"
+"The current chess board in FEN notation looks like this: {fen}\n"
+"I have to choose the next move and should reason about it:\n"
+"Reasoning: [REASONING]"
+"Therefore I choose the move (in SAN notation): [MOVE]" where MOVE in legal_moves
