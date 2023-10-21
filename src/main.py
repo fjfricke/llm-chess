@@ -30,27 +30,28 @@ async def main():
                     model="openai/gpt-3.5-turbo-instruct")
                 print("AI reasoning: " + answer.variables["REASONING"])
                 move = answer.variables["MOVE"]
+                board.push_san(move)
             else:
                 move = input("Move: ")
-            try:
-                board.push_san(move)
-            except chess.InvalidMoveError:
-                print("Invalid move")
-                continue
-            except chess.IllegalMoveError:
-                print("Illegal move")
-                continue
-            except chess.AmbiguousMoveError:
-                print("Ambiguous move")
-                continue
-            else:
-                answer = await lmql.run(
-                    query_analyse_human_move,
-                    color=color_ai,
-                    move=move,
-                    fen=board.board_fen(),
-                    model="openai/gpt-3.5-turbo-instruct")
-                print("AI feedback: " + answer.variables["ANALYSIS"])
+                try:
+                    board.push_san(move)
+                except chess.InvalidMoveError:
+                    print("Invalid move")
+                    continue
+                except chess.IllegalMoveError:
+                    print("Illegal move")
+                    continue
+                except chess.AmbiguousMoveError:
+                    print("Ambiguous move")
+                    continue
+                else:
+                    answer = await lmql.run(
+                        query_analyse_human_move,
+                        color=color_ai,
+                        move=move,
+                        fen=board.board_fen(),
+                        model="openai/gpt-3.5-turbo-instruct")
+                    print("AI feedback: " + answer.variables["ANALYSIS"])
             # print(board.board_fen())
             next_move_is_ai = not next_move_is_ai
 
