@@ -1,4 +1,4 @@
-# Chess AI
+# LLM Chess
 
 This project is a simple chess AI that uses the `chess` Python library and the `lmql` library to interact with the OpenAI GPT-3.5-turbo model. `lmql` is used to restrict the LLM's output to allowed moves only.
 
