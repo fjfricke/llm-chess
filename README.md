@@ -11,9 +11,7 @@ To get a local copy up and running, you will need Python installed on your machi
 You need to install the following Python libraries:
 
 - `chess`
-- `random`
 - `lmql`
-- `asyncio`
 
 This can be done using poetry. Fore more information, see the instructions on the [official Poetry website](https://python-poetry.org/docs/#installation).
 
