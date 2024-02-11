@@ -18,6 +18,8 @@ async def main():
     color_ai = "white" if next_move_is_ai else "black"
     color_human = "black" if next_move_is_ai else "white"
     while not board.is_game_over():
+        move = None
+        all_moves = []
         print("You are playing as " + color_human + ".")
         while True:
             print(board)
@@ -25,7 +27,9 @@ async def main():
                 answer = await lmql.run(
                     query_make_move,
                     color=color_ai,
-                    fen=board.board_fen(),
+                    last_move=move,
+                    all_moves=all_moves,
+                    fen  = str(board),
                     legal_moves=set([board.san(uci) for uci in board.legal_moves]),
                     model="openai/gpt-3.5-turbo-instruct")
                 print("AI reasoning: " + answer.variables["REASONING"])
@@ -48,11 +52,12 @@ async def main():
                     answer = await lmql.run(
                         query_analyse_human_move,
                         color=color_ai,
-                        move=move,
+                        last_move=move,
+                        all_moves=all_moves,
                         fen=board.board_fen(),
                         model="openai/gpt-3.5-turbo-instruct")
                     print("AI feedback: " + answer.variables["ANALYSIS"])
-            # print(board.board_fen())
+            all_moves.append(move)
             next_move_is_ai = not next_move_is_ai
 
 

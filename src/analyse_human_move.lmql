@@ -1,6 +1,8 @@
 argmax
+all_moves_str = ", ".join([f"{i+1}. {move}" for i, move in enumerate(all_moves)])
 "I am playing chess with color {color}.\n"
-"The human just made the move {move}.\n"
-"The chess board in FEN notation looks like this now: {fen}\n"
+"All previous moves were:\n{all_moves_str}\n"
+"The human just made the move {last_move}.\n"
+"The chess board looks like this now:\n{fen}\n"
 "I should analyse the human move.\n"
 "Analysis: [ANALYSIS]"
